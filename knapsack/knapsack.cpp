@@ -7,22 +7,23 @@ struct object
 	int profit;
 	int weight;
 	double ratio;
-	object(int p = 0, int w = 0, int r = 0) : profit(p), weight(w), ratio(r) {}
+	object(int p = 0, int w = 0, int r = 0) 
+		: profit(p), weight(w), ratio(r) {}
 };
 
 class knapsack
 {
-		int total_weight;
-		double total_profit;
-		object * arr;
-		int n;
-		void scan_objects();
-		void sort();
+	int total_weight;
+	double total_profit;
+	object * arr;
+	int n;
+	void scan_objects();
+	void sort();
 	public:
-		knapsack();
-		void maximize();
-		void display();
-		~knapsack() {delete [] arr;}
+	knapsack();
+	void maximize();
+	void display();
+	~knapsack() {delete [] arr;}
 };
 
 knapsack :: knapsack()
@@ -61,12 +62,14 @@ void adjust(object *tree, int n, int ptr)
 	object item = tree[ptr];
 	while(right < n)
 	{
-		if(item.ratio >= tree[left].ratio && item.ratio >= tree[right].ratio)
+		if(item.ratio >= tree[left].ratio
+				&& item.ratio >= tree[right].ratio)
 		{
 			tree[ptr] = item;
 			return;
 		}
-		else if(tree[left].ratio > tree[right].ratio)
+		else if(tree[left].ratio
+				> tree[right].ratio)
 		{
 			tree[ptr] = tree[left];
 			ptr = left;
@@ -79,7 +82,8 @@ void adjust(object *tree, int n, int ptr)
 		left = ptr*2 + 1;
 		right = ptr*2 + 2;
 	}
-	if(left == n-1 && tree[left].ratio > item.ratio)
+	if(left == n-1 && tree[left].ratio
+			> item.ratio)
 	{
 		tree[ptr] = tree[left];
 		ptr = left;
@@ -124,10 +128,11 @@ void knapsack :: display()
 	for(int i = 0; i < n; ++i)
 	{
 		cout << "Profit : " << arr[i].profit << tab
-			 << "Weight : " << arr[i].weight << tab
-			 << "Ratio : " << arr[i].ratio << endl;
+			<< "Weight : " << arr[i].weight << tab
+			<< "Ratio : " << arr[i].ratio << endl;
 	}
-	cout << endl << "Maximum profit : " << total_profit << endl;
+	cout << endl << "Maximum profit : " 
+		<< total_profit << endl;
 }
 
 int main()

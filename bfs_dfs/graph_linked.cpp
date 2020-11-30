@@ -21,26 +21,33 @@ struct edgenode{
 };
 
 struct graph{
-  edgenode *edges[MAXNODE+1]; // Adjacency List(Array of linked lists)
-  int outdegree[MAXNODE+1];  // OUTDEGREE OF EACH NODE
+  // Adjacency List(Array of linked lists)
+  edgenode *edges[MAXNODE+1]; 
+  // OUTDEGREE OF EACH NODE
+  int outdegree[MAXNODE+1];  
   int nvertices;
   int nedges;
   bool directed;
 };
 
 void initialize_graph(graph *g, bool directed){
-  g->nvertices = 0; // INITIALLY THERE ARE NO VERTICES
-  g->nedges = 0;  // THEREFORE NO EDGES ALSO
+  // INITIALLY THERE ARE NO VERTICES
+  g->nvertices = 0; 
+  // THEREFORE NO EDGES ALSO
+  g->nedges = 0;  
   g->directed = directed;
   for(int i = 0; i < MAXNODE+1; i++){
-    g->edges[i] = NULL; // ADJACENCY LIST WILL BE NULL INITIALLY
-    g->outdegree[i] = 0; // OUTDEGREE WILL BE ZERO AS NO NODES ARE PRESENT
+    // ADJACENCY LIST WILL BE NULL INITIALLY
+    g->edges[i] = NULL; 
+    // OUTDEGREE WILL BE ZERO AS NO NODES ARE PRESENT
+    g->outdegree[i] = 0; 
   }
   return;
 }
 
 void insert_edge(graph *g, int x, int y, bool directed, int weight=0){
-  edgenode *e = new edgenode; // TEMPERORY EDGENODE
+  // TEMPERORY EDGENODE
+  edgenode *e = new edgenode; 
   e->weight = weight;
   e->adj = y;
   // INSERT IN THE FRONT OF THE EDGE LIST
@@ -61,7 +68,8 @@ void build_graph(graph *g, bool directed){
   cout << "Enter no. of vertices and edges: ";
   cin >> n >> m;
   if(n == 0) { exit(0); }
-  g->nvertices = n; // TOTAL NO OF NODES IN GRAPH
+  // TOTAL NO OF NODES IN GRAPH
+  g->nvertices = n; 
   for(int i = 0; i < m; i++){
     cout << "\nEnter edge to be inserted: \n source vertex: ";
     cin >> x;
@@ -89,7 +97,8 @@ void print_graph(graph *g){
 
 // BFS of graph
 void bfs(graph *g, int source){
-  state[source] = DISCOVERED;  // DISCOVERED
+  // DISCOVERED
+  state[source] = DISCOVERED;  
   Enqueue(source);
   int vertex;
   while((vertex = Dequeue()) != -1){
@@ -97,7 +106,8 @@ void bfs(graph *g, int source){
     edgenode *ptr = g->edges[vertex];
     while(ptr != NULL){
       if(state[ptr->adj] == UNDISCOVERED){
-        cout << "\n-> \tcurrent edges is: {" << itoc(vertex) << ", " << itoc(ptr->adj) << "}";
+        cout << "\n-> \tcurrent edges is: {" 
+          << itoc(vertex) << ", " << itoc(ptr->adj) << "}";
         state[ptr->adj] = DISCOVERED;
         parent[ptr->adj] = vertex;
         Enqueue(ptr->adj);
@@ -130,14 +140,16 @@ void initialize_arrays(graph *g){
 // DFS of graph
 void dfs(graph *g, int source){
   int vertex = source;
-  bool undiscovered_adj = false;  // true if node has undiscovered neighbours
+  // true if node has undiscovered neighbours
+  bool undiscovered_adj = false;  
   stack<int> dfs_stack;
   state[source] = DISCOVERED;
   dfs_stack.push(source);
   edgenode *ptr = new edgenode;
   ptr = g->edges[source];
   entry_time[source] = ++dfs_time;
-  cout << "\nCurrent Vertex is: " << itoc(vertex) << " with entry time: " << entry_time[vertex];
+  cout << "\nCurrent Vertex is: " << itoc(vertex) 
+    << " with entry time: " << entry_time[vertex];
   do{
     while(ptr != NULL){
       if(state[ptr->adj] == UNDISCOVERED){
@@ -147,7 +159,8 @@ void dfs(graph *g, int source){
         parent[ptr->adj] = vertex;
         dfs_stack.push(ptr->adj);
         vertex = ptr->adj;
-        cout << "\nCurrent Vertex is: " << itoc(vertex) << " with entry time: " << entry_time[vertex];
+        cout << "\nCurrent Vertex is: " << itoc(vertex) 
+          << " with entry time: " << entry_time[vertex];
         ptr = g->edges[ptr->adj];
       }else{
         ptr = ptr->next;
@@ -166,7 +179,8 @@ void dfs(graph *g, int source){
       if(!undiscovered_adj){
         exit_time[vertex] = ++dfs_time;
         state[vertex] = PROCESSED;
-        cout << "\n exit time of vertex: " << itoc(vertex)<< "is: " << exit_time[vertex];
+        cout << "\n exit time of vertex: " 
+          << itoc(vertex)<< "is: " << exit_time[vertex];
       }
     }
     if(!undiscovered_adj)

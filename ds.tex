@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+\usepackage{mathptmx}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{dirtytalk}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{xcolor}
+\setlength{\parskip}{1.1em}
+\renewcommand{\baselinestretch}{1.1}
+
+
+\title{\textbf{ADA ASSIGNMENT: \\ IMPLEMENT ANY 5 PROBLEMS}}
+\author{HARSH SHETH, 185560 \\ SHUBHAM JAIN, 185550 \\ BHANU RANA, 185559}
+
+\lstdefinestyle{mystyle}{
+  keepspaces=true, 
+  numbers=left, 
+  frame=shadowbox,
+  captionpos=t
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+  \begin{titlepage}
+    \maketitle
+  \end{titlepage}
+  \section{PERSONAL DETAILS}
+  \subsection{GROUP NO: 17}
+  \begin{itemize}
+  \item[$\blacksquare$]{\textbf{HARSH SHETH}}
+    \begin{itemize}
+      \item[$\square$]{\textbf{Email: \underline{ycdtharsh@gmail.com}}}
+      \item[$\square$]{\textbf{Roll No: \underline{185560}}}
+      \item[$\square$]{\textbf{Contact: \underline{+91} \underline{9407394270}}}
+    \end{itemize}
+  \item[$\blacksquare$]{\textbf{SHUBHAM JAIN}}
+    \begin{itemize}
+      \item[$\square$]{\textbf{Email: \underline{sjn574472@gmail.com}}}
+      \item[$\square$]{\textbf{Roll No: \underline{185550}}}
+      \item[$\square$]{\textbf{Contact: \underline{+91} \underline{8580410883}}}
+    \end{itemize}
+  \item[$\blacksquare$]{\textbf{BHANU RANA}}
+    \begin{itemize}
+      \item[$\square$]{\textbf{Email: \underline{bhanupratap1312@gmail.com}}}
+      \item[$\square$]{\textbf{Roll No: \underline{185559} }}
+      \item[$\square$]{\textbf{Contact: \underline{+91} \underline{8529580897}}}
+    \end{itemize}
+  \end{itemize}
+  \newpage
+
+  \section{CODE AND SNAPSHOTS}
+    \subsection{\textbf{DFS and BFS}}
+      \lstinputlisting[language=C++, caption=dfs\_bfs.cpp file]{./bfs_dfs/graph_linked.cpp}
+      \lstinputlisting[language=C++, caption=queue.h file]{./bfs_dfs/queue.h}
+    \newpage
+
+    \subsection{\textbf{HEAPSORT}}
+      \lstinputlisting[language=C++, caption=heapsort.cpp file]{./heapsort/heapify.cpp}
+    \newpage
+
+    \subsection{\textbf{KNAPSACK}}
+      \lstinputlisting[language=C++, caption=knapsack.cpp file]{./knapsack/knapsack.cpp}
+    \newpage
+
+    \subsection{\textbf{N-QUEEN}}
+      \lstinputlisting[language=C++, caption=nqueen.cpp file]{./nqueen/nqueen.cpp}
+    \newpage
+
+  %\section{OUTPUT SNAPSHOTS}
+  %\begin{figure}[hb]
+  %\caption{\emph{\textbf{KEYWORD MATCHED}}}
+  %\centering
+  %\includegraphics[width=6in, height=2.3in]{first}
+  %\end{figure}
+  %\begin{figure}[hb]
+  %\caption{\emph{\textbf{KEYWORD NOT MATCHED}}}
+  %\centering
+  %\includegraphics[width=6in, height=2.5in]{second}
+  %\end{figure}
+\end{document}
